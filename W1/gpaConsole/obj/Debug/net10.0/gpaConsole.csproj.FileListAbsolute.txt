@@ -1,0 +1,15 @@
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/obj/Debug/net10.0/gpaConsole.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/obj/Debug/net10.0/gpaConsole.AssemblyInfoInputs.cache
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/obj/Debug/net10.0/gpaConsole.AssemblyInfo.cs
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/obj/Debug/net10.0/gpaConsole.csproj.CoreCompileInputs.cache
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/obj/Debug/net10.0/gpaConsole.sourcelink.json
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/bin/Debug/net10.0/gpaConsole
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/bin/Debug/net10.0/gpaConsole.deps.json
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/bin/Debug/net10.0/gpaConsole.runtimeconfig.json
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/bin/Debug/net10.0/gpaConsole.dll
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/bin/Debug/net10.0/gpaConsole.pdb
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/obj/Debug/net10.0/gpaConsole.dll
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/obj/Debug/net10.0/refint/gpaConsole.dll
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/obj/Debug/net10.0/gpaConsole.pdb
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/obj/Debug/net10.0/gpaConsole.genruntimeconfig.cache
+/Users/Solomon/Documents/Tasks/W1/gpaConsole/obj/Debug/net10.0/ref/gpaConsole.dll

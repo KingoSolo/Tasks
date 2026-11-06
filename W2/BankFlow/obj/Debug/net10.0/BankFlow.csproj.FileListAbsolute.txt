@@ -1,0 +1,15 @@
+/Users/Solomon/Documents/Tasks/W2/BankFlow/bin/Debug/net10.0/BankFlow
+/Users/Solomon/Documents/Tasks/W2/BankFlow/bin/Debug/net10.0/BankFlow.deps.json
+/Users/Solomon/Documents/Tasks/W2/BankFlow/bin/Debug/net10.0/BankFlow.runtimeconfig.json
+/Users/Solomon/Documents/Tasks/W2/BankFlow/bin/Debug/net10.0/BankFlow.dll
+/Users/Solomon/Documents/Tasks/W2/BankFlow/bin/Debug/net10.0/BankFlow.pdb
+/Users/Solomon/Documents/Tasks/W2/BankFlow/obj/Debug/net10.0/BankFlow.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Solomon/Documents/Tasks/W2/BankFlow/obj/Debug/net10.0/BankFlow.AssemblyInfoInputs.cache
+/Users/Solomon/Documents/Tasks/W2/BankFlow/obj/Debug/net10.0/BankFlow.AssemblyInfo.cs
+/Users/Solomon/Documents/Tasks/W2/BankFlow/obj/Debug/net10.0/BankFlow.csproj.CoreCompileInputs.cache
+/Users/Solomon/Documents/Tasks/W2/BankFlow/obj/Debug/net10.0/BankFlow.sourcelink.json
+/Users/Solomon/Documents/Tasks/W2/BankFlow/obj/Debug/net10.0/BankFlow.dll
+/Users/Solomon/Documents/Tasks/W2/BankFlow/obj/Debug/net10.0/refint/BankFlow.dll
+/Users/Solomon/Documents/Tasks/W2/BankFlow/obj/Debug/net10.0/BankFlow.pdb
+/Users/Solomon/Documents/Tasks/W2/BankFlow/obj/Debug/net10.0/BankFlow.genruntimeconfig.cache
+/Users/Solomon/Documents/Tasks/W2/BankFlow/obj/Debug/net10.0/ref/BankFlow.dll

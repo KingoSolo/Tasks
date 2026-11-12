@@ -1,10 +1,12 @@
 public class BankAccountServices
 {
     private readonly IAccountFactory _accountFactory;
+    private readonly List<Customer> _allCustomers;
 
-    public BankAccountServices(IAccountFactory accountFactory)
+    public BankAccountServices(IAccountFactory accountFactory, List<Customer> allCustomers)
     {
         _accountFactory = accountFactory;
+        _allCustomers = allCustomers;
     }
 
     // Create a new account
@@ -43,5 +45,13 @@ public class BankAccountServices
             $"Account Balance: NGN {account.Balance:N2}");
 
         return true;
+    }
+
+    //Search for a customers account number 
+    public Account? GetAccountByNumber(string accountNumber)
+    {
+        return _allCustomers
+            .SelectMany(c => c.Accounts)
+            .FirstOrDefault(a => a.AccountNumber == accountNumber);
     }
 }

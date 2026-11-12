@@ -6,7 +6,7 @@ AuthenticationServices authService = new();
 IAccountFactory accountFactory = new AccountFactory();
 
 BankAccountServices accountService =
-    new BankAccountServices(accountFactory);
+    new BankAccountServices(accountFactory,authService.AllCustomers);
 
 TransactionService transactionService =
     new TransactionService(accountService);
@@ -255,10 +255,11 @@ while (true)
                     // TRANSFER
                     case "5":
 
-                        if (currentCustomer.Accounts.Count < 2)
+                        if (currentCustomer.Accounts.Count < 1)
                         {
-                            Console.WriteLine(
-                                "You need at least two accounts to transfer money.");
+                            Console.WriteLine("You do not have an active account to transfer money from.");
+                            Console.WriteLine("\nPress any key to return to menu...");
+                            Console.ReadKey();
                             break;
                         }
 
@@ -277,12 +278,16 @@ while (true)
                             destinationAccount,
                             transferAmount);
 
+                        Console.WriteLine("\nPress any key to return to the menu...");
+                        Console.ReadKey();
                         break;
 
                     // ACCOUNT DETAILS
                     case "6":
 
                         printer.PrintAccountDetails(currentCustomer);
+                        Console.WriteLine("\nPress any key to return to the menu...");
+                        Console.ReadKey();
 
                         break;
 

@@ -135,7 +135,7 @@ public class TransactionService
             _accountService.GetAccount(customer, sourceAccountNumber);
 
         Account? destinationAccount =
-            _accountService.GetAccount(customer, destinationAccountNumber);
+            _accountService.GetAccountByNumber(destinationAccountNumber);
 
         if (sourceAccount == null || destinationAccount == null)
         {

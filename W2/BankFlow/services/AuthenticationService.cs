@@ -5,6 +5,7 @@ public class AuthenticationServices
     public Customer? CurrentUser { get; private set; }
 
     private readonly List<Customer> _allCustomers = new();
+    public List<Customer> AllCustomers => _allCustomers;
 
     // Validate names
     public bool IsValidName(string firstName, string lastName)

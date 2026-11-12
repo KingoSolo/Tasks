@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("gpaConsole")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f80f74a2e11569b73ee0a56bc40c52b6666e1e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d2b17a24625ce368c153f67dc2aa33d3192cc21")]
 [assembly: System.Reflection.AssemblyProductAttribute("gpaConsole")]
 [assembly: System.Reflection.AssemblyTitleAttribute("gpaConsole")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

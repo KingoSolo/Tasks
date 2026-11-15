@@ -204,3 +204,11 @@
 /Users/Solomon/Documents/Tasks/W3/WalletServiceAPI/bin/Debug/net10.0/runtimes/win-x64/native/e_sqlite3.dll
 /Users/Solomon/Documents/Tasks/W3/WalletServiceAPI/bin/Debug/net10.0/runtimes/win-x86/native/e_sqlite3.dll
 /Users/Solomon/Documents/Tasks/W3/WalletServiceAPI/bin/Debug/net10.0/runtimes/win/lib/net9.0/System.Windows.Extensions.dll
+/Users/Solomon/Documents/Tasks/W3/WalletServiceAPI/bin/Debug/net10.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/Solomon/Documents/Tasks/W3/WalletServiceAPI/bin/Debug/net10.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/Solomon/Documents/Tasks/W3/WalletServiceAPI/bin/Debug/net10.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/Solomon/Documents/Tasks/W3/WalletServiceAPI/bin/Debug/net10.0/Microsoft.IdentityModel.Logging.dll
+/Users/Solomon/Documents/Tasks/W3/WalletServiceAPI/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.dll
+/Users/Solomon/Documents/Tasks/W3/WalletServiceAPI/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/Solomon/Documents/Tasks/W3/WalletServiceAPI/bin/Debug/net10.0/Microsoft.IdentityModel.Tokens.dll
+/Users/Solomon/Documents/Tasks/W3/WalletServiceAPI/bin/Debug/net10.0/System.IdentityModel.Tokens.Jwt.dll

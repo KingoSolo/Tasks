@@ -28,6 +28,7 @@ public class WalletService : IWalletService
         wallet = new Wallet
         {
             UserId = userId,
+            WalletAddress = Guid.NewGuid().ToString("N"),
             Balance = 0m
         };
 

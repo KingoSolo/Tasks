@@ -1,30 +1,34 @@
-using Microsoft.AspNetCore.Components.Forms;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ToDo.DTOs;
 using ToDo.Services;
 
 namespace ToDo.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class UserController : ControllerBase
+[Route("api/todos")]
+[Authorize]
+public class TodoController : ControllerBase
 {
-    private readonly IUserService _userService;
+    private readonly ITodoService _todoService;
 
-    public UserController(IUserService userService)
+    public TodoController(ITodoService todoService)
     {
-        _userService = userService;
+        _todoService = todoService;
     }
 
+    private string currentUserId =>
+        User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+
     // GET: /User/all-users?page=1
-    [HttpGet("all-users")]
+    [HttpGet("all-todos")]
     public async Task<IActionResult> GetAllToDos(int page, int pageSize){
         if (page < 1)
         {
             return BadRequest("Page number must be greater than 0");
         }
-        var todos = await _userService.GetAllToDoAsync(page,pageSize);
+        var todos = await _todoService.GetAllToDoAsync(page,pageSize,currentUserId);
         return Ok(todos);
     }
 
@@ -32,16 +36,7 @@ public class UserController : ControllerBase
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetTodoById(int id)
     {
-        var todo = await _userService.GetToDoByIdAsync(id);
-        if(todo == null) return NotFound("result not found");
-        return Ok(todo);
-    }
-
-    // GET: /User/example@gmail.com
-    [HttpGet("{email}")]
-    public async Task<IActionResult> GetTodoByEmail(string email)
-    {
-        var todo = await _userService.GetToDoByEmailAsync(email);
+        var todo = await _todoService.GetToDoByIdAsync(id,currentUserId);
         if(todo == null) return NotFound("result not found");
         return Ok(todo);
     }
@@ -49,7 +44,7 @@ public class UserController : ControllerBase
     [HttpGet("search")]
     public async Task<IActionResult> SearchTodos(string? term, DateTime? date)
     {
-        var todo = await _userService.SearchToDoAsync(term,date);
+        var todo = await _todoService.SearchToDoAsync(term,date,currentUserId);
         return Ok(todo);
     }
 
@@ -61,7 +56,7 @@ public class UserController : ControllerBase
         {
             return BadRequest("Todo title is required");
         }
-        var createdToDo = await _userService.AddToDoAsync(request);
+        var createdToDo = await _todoService.AddToDoAsync(request,currentUserId);
         return CreatedAtAction(
             nameof(GetTodoById),
             new { id = createdToDo.Id },
@@ -77,7 +72,7 @@ public class UserController : ControllerBase
             return BadRequest("Todo title is required.");
         }
 
-        var updatedTodo = await _userService.UpdateToDoAsync(id, request);
+        var updatedTodo = await _todoService.UpdateToDoAsync(id, request,currentUserId);
         if (updatedTodo == null) return NotFound("Todo not found.");
 
         return Ok(updatedTodo);
@@ -86,21 +81,10 @@ public class UserController : ControllerBase
     [HttpDelete("delete/{id:int}")]
     public async Task<IActionResult> DeleteTodo(int id)
     {
-        var deleted = await _userService.DeleteToDoAsync(id);
+        var deleted = await _todoService.DeleteToDoAsync(id,currentUserId);
         if (!deleted) return NotFound("Todo not found.");
 
         return Ok("Todo deleted successfully.");
     }
 
-    [HttpDelete("delete/email/{email}")]
-    public async Task<IActionResult> DeleteTodoByEmail(string email)
-    {
-      
-
-     
-        var deleted = await _userService.DeleteToDoByEmailAsync(email);
-        if (!deleted) return NotFound("Todo not found.");
-
-        return Ok("Todo deleted successfully.");
-    }
 }

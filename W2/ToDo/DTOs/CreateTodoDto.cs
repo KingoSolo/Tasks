@@ -6,7 +6,6 @@ public class CreateTodoDto
 
     public string Description { get; set; } = "";
 
-    public string Email { get; set; } = "";
-
+    
     public DateTime DueDate { get; set; }
 }

@@ -6,10 +6,10 @@ using ToDo.Data;
 
 namespace ToDo.Services;
 
-public class UserService : IUserService
+public class TodoService : ITodoService
 {
     private readonly ApplicationDbContext _context;
-    public UserService(ApplicationDbContext context)
+    public TodoService(ApplicationDbContext context)
     {
         _context = context;
     }
@@ -27,10 +27,13 @@ public class UserService : IUserService
         };
     }
 
-    public async Task<PagedTodoResponseDto> GetAllToDoAsync(int page, int pageSize)
+    public async Task<PagedTodoResponseDto> GetAllToDoAsync(int page, int pageSize, string userId)
     {
-        int totalCount = await _context.Todos.CountAsync();
-        var todos =  await _context.Todos
+        var query = _context.Todos
+            .Where(todo =>  todo.UserId == userId);
+
+        int totalCount = await query.CountAsync();
+        var todos =  await query
             .OrderBy(todo => todo.Id)
             .Skip((page-1) * pageSize)
             .Take(pageSize)
@@ -48,22 +51,19 @@ public class UserService : IUserService
     };
     }
 
-    public async Task<ReturnTodoDto?>GetToDoByIdAsync(int id)
+    public async Task<ReturnTodoDto?>GetToDoByIdAsync(int Id,string userId)
     {
-        var todo = await _context.Todos.FindAsync(id);
+        var todo = await _context.Todos
+            .FirstOrDefaultAsync(todo =>
+                todo.Id == Id && todo.UserId == userId);        
         return todo == null ? null:MapToDto(todo);
     }
 
-    public async Task<ReturnTodoDto?> GetToDoByEmailAsync(string email)
+    public async Task<List<ReturnTodoDto>> SearchToDoAsync(string? term, DateTime? date,string userId)
     {
-        var todo = await _context.Todos
-            .FirstOrDefaultAsync(t => t.Email == email);
-        return todo == null ? null : MapToDto(todo);
-    }
-
-    public async Task<List<ReturnTodoDto>> SearchToDoAsync(string? term, DateTime? date)
-    {
-        var query = _context.Todos.AsQueryable();
+        var query = _context.Todos
+                .Where(todo => todo.UserId == userId)
+                .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(term))
         {
@@ -82,14 +82,14 @@ public class UserService : IUserService
         return matchingTodos.Select(todo => MapToDto(todo)).ToList();
     }
 
-    public async Task<ReturnTodoDto> AddToDoAsync(CreateTodoDto request)
+    public async Task<ReturnTodoDto> AddToDoAsync(CreateTodoDto request,string userId)
     {
         var todo = new Todo
         {
             Title = request.Title,
             Description = request.Description,
-            Email = request.Email,
-            DueDate = request.DueDate
+            DueDate = request.DueDate,
+            UserId = userId
         };
 
         _context.Todos.Add(todo);
@@ -98,9 +98,11 @@ public class UserService : IUserService
         return MapToDto(todo);
     }
 
-    public async Task<ReturnTodoDto?> UpdateToDoAsync(int id, UpdateTodoDto request)
+    public async Task<ReturnTodoDto?> UpdateToDoAsync(int id, UpdateTodoDto request,string userId)
     {
-        var todo = await _context.Todos.FindAsync(id);
+        var todo = await _context.Todos.FirstOrDefaultAsync(
+            todo => todo.Id == id && todo.UserId == userId
+        );
         if (todo == null) return null;
 
         todo.Title = request.Title;
@@ -113,26 +115,17 @@ public class UserService : IUserService
          return MapToDto(todo);
     }
 
-    public async Task<bool> DeleteToDoAsync(int id)
+    public async Task<bool> DeleteToDoAsync(int id,string userId)
     {
-        var todo = await _context.Todos.FindAsync(id);
+        var todo = await _context.Todos.FirstOrDefaultAsync(
+            todo => todo.Id == id && todo.UserId == userId
+        );
         if (todo == null) return false;
 
         _context.Todos.Remove(todo);
         await _context.SaveChangesAsync();
         return true;
     }
-
-    public async Task<bool> DeleteToDoByEmailAsync(string email)
-    {
-        var todo = await _context.Todos.FirstOrDefaultAsync(t => t.Email == email);
-        if (todo == null) return false;
-
-        _context.Todos.Remove(todo);
-        await _context.SaveChangesAsync();
-        return true;
-    }
-
     
 
 }

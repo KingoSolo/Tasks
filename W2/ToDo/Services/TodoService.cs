@@ -104,16 +104,22 @@ public class TodoService : ITodoService
             todo => todo.Id == id && todo.UserId == userId
         );
         if (todo == null) return null;
-
+        
+        if (!string.IsNullOrWhiteSpace(request.Title))
         todo.Title = request.Title;
-        todo.Description = request.Description;
-        todo.Email = request.Email;
-        todo.DueDate = request.DueDate;
-        todo.IsCompleted = request.IsCompleted;
+
+        if (request.Description != null)
+            todo.Description = request.Description;
+
+        if (request.DueDate.HasValue)
+            todo.DueDate = request.DueDate.Value;
+
+        if (request.IsCompleted.HasValue)
+            todo.IsCompleted = request.IsCompleted.Value;
 
         await _context.SaveChangesAsync();
-         return MapToDto(todo);
-    }
+        return MapToDto(todo);
+    } 
 
     public async Task<bool> DeleteToDoAsync(int id,string userId)
     {

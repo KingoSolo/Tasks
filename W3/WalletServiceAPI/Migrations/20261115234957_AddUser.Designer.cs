@@ -11,8 +11,8 @@ using WalletServiceAPI.Data;
 namespace WalletServiceAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20261115234104_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20261115234957_AddUser")]
+    partial class AddUser
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
